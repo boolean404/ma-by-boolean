@@ -1,0 +1,49 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © boolean404
+
+//@version=5
+indicator(title="MA by Boolean", shorttitle="MA by Boolean", overlay=true, timeframe="", timeframe_gaps=true)
+
+// start simple moving average
+sma1_len = input.int(12, minval=1, title="SMA 1", group="MA Length")
+sma2_len = input.int(26, minval=1, title="SMA 2", group="MA Length")
+sma3_len = input.int(50, minval=1, title="SMA 3", group="MA Length")
+sma4_len = input.int(100, minval=1, title="SMA 4", group="MA Length")
+
+sma1_src = input(close, title="SMA 1", group="MA Source")
+sma2_src = input(close, title="SMA 2", group="MA Source")
+sma3_src = input(close, title="SMA 3", group="MA Source")
+sma4_src = input(close, title="SMA 4", group="MA Source")
+
+sma1_out = ta.sma(sma1_src, sma1_len)
+sma2_out = ta.sma(sma2_src, sma2_len)
+sma3_out = ta.sma(sma3_src, sma3_len)
+sma4_out = ta.sma(sma4_src, sma4_len)
+
+plot(sma1_out, title="SMA 1", color=color.yellow)
+plot(sma2_out, title="SMA 2", color=color.green)
+plot(sma3_out, title="SMA 3", color=color.red)
+plot(sma4_out, title="SMA 4", color=color.blue)
+// end simple moving average
+
+// start exponential moving average
+ema1_len = input.int(20, minval=1, title="EMA 1", group="MA Length")
+ema2_len = input.int(50, minval=1, title="EMA 2", group="MA Length")
+ema3_len = input.int(100, minval=1, title="EMA 3", group="MA Length")
+ema4_len = input.int(200, minval=1, title="EMA 4", group="MA Length")
+
+ema1_src = input(close, title="EMA 1", group="MA Source")
+ema2_src = input(close, title="EMA 2", group="MA Source")
+ema3_src = input(close, title="EMA 3", group="MA Source")
+ema4_src = input(close, title="EMA 4", group="MA Source")
+
+ema1_out = ta.ema(ema1_src, ema1_len)
+ema2_out = ta.ema(ema2_src, ema2_len)
+ema3_out = ta.ema(ema3_src, ema3_len)
+ema4_out = ta.ema(ema4_src, ema4_len)
+
+plot(ema1_out, title="EMA 1", color=color.yellow)
+plot(ema2_out, title="EMA 2", color=color.green)
+plot(ema3_out, title="EMA 3", color=color.red)
+plot(ema4_out, title="EMA 4", color=color.blue)
+// end exponential moving average
